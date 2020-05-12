@@ -1,8 +1,22 @@
 const express = require("express");
 const router = express.Router();
 
+const Cdb = {
+    "egg": {
+        quantity: 8,
+        price: 9
+    }
+}
+
 router.get("/", (req, res, next) => {
-    res.send("testingC");
+    var result = {}
+    Object.entries(Cdb).forEach(([key, val]) => {
+        console.log(key)
+        if(req.query.ingredient === key){
+            result = val;
+        }
+    });
+    res.send(result);
 });
 
 module.exports = router;

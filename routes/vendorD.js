@@ -1,8 +1,23 @@
 const express = require("express");
 const router = express.Router();
 
+const Ddb = {
+    "milk": {
+        quantity: 2,
+        price: 8
+    }
+}
+
+
 router.get("/", (req, res, next) => {
-    res.send("testingD");
+    var result = {}
+    Object.entries(Ddb).forEach(([key, val]) => {
+        console.log(key)
+        if(req.query.ingredient === key){
+            result = val;
+        }
+    });
+    res.send(result);
 });
 
 module.exports = router;

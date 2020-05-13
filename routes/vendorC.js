@@ -16,7 +16,7 @@ router.get("/", (req, res, next) => {
             result = val;
         }
     });
-    res.send(result);
+    res.send({...result, vendor: "vendor C"});
 });
 
 module.exports = router;

@@ -1,5 +1,9 @@
 const express = require("express");
 const app = express();
+const cors = require('cors');
+//remove for production
+app.use(cors());
+app.options('*', cors());
 
 const vendorA = require("./routes/vendorA");
 const vendorB = require("./routes/vendorB");
@@ -11,6 +15,6 @@ app.use("/vendorB", vendorB);
 app.use("/vendorC", vendorC);
 app.use("/vendorD", vendorD);
 
-app.listen(3000, '0.0.0.0', () => {
-    console.log('Vendors app listening on port 3000!');
+app.listen(5000, 'localhost', () => {
+    console.log('Vendors app listening on port 5000!');
 });
